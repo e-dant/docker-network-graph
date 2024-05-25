@@ -7,10 +7,9 @@ import docker
 import typing
 from dataclasses import dataclass
 from graphviz import Graph
-from graphviz.parameters.formats import FORMATS
+from graphviz.backend import FORMATS
 
 # colorlover.scales["12"]["qual"]["Paired"] converted to hex strings
-# Also some neutral colors from colormind.io
 COLORS = [
     "#1f78b4",
     "#33a02c",
@@ -22,14 +21,16 @@ COLORS = [
     "#b2df8a",
     "#fdbf6f",
     "#cab2d6",
-    "#ffff99",
-    "#0d8bad",
-    "#e98420",
-    "#0e9997",
-    "#6a5164",
-    "#afa277",
-    "#149ead",
-    "#a54a56",
+    "#f48b11",
+    "#782432",
+    "#968f46",
+    "#ec9e31",
+    "#dedebe",
+    "#9fa874",
+    "#a6a287",
+    "#895a4d",
+    "#878e63",
+    "#d2c477",
 ]
 i = 0
 
@@ -72,7 +73,7 @@ def get_unique_color() -> str:
         i += 1
     else:
         # Generate random color if we've already used the 12 preset ones
-        c = '#'.join([f"{random.randint(0, 255):02x}" for _ in range(3)])
+        c = "#%06x".format(random.randint(0, 0xFFFFFF))
 
     return c
 
